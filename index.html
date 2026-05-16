@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>OMgpt - Smart Student Library</title>
+
+<style>
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#07111f;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#07111f;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#4c6fff;
+    border-radius:20px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:270px;
+    height:100vh;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    border-right:1px solid rgba(255,255,255,0.08);
+    padding:25px;
+    overflow-y:auto;
+    z-index:1000;
+}
+
+.logo{
+    font-size:38px;
+    font-weight:bold;
+    text-align:center;
+    margin-bottom:35px;
+    background:linear-gradient(to right,#74a9ff,#c084fc);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    padding:14px 18px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.04);
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    background:#4c6fff;
+    transform:translateX(5px);
+}
+
+/* MAIN */
+
+.main{
+    margin-left:270px;
+    padding:35px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:90px;
+    margin-bottom:20px;
+    background:linear-gradient(to right,#74a9ff,#c084fc);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    font-size:22px;
+    line-height:1.8;
+    max-width:700px;
+    color:#d6d6d6;
+    margin-bottom:40px;
+}
+
+/* SEARCH */
+
+.search-container{
+    width:100%;
+    max-width:750px;
+    position:relative;
+}
+
+.search-bar{
+    width:100%;
+    padding:20px 28px;
+    border:none;
+    outline:none;
+    border-radius:60px;
+    background:rgba(255,255,255,0.06);
+    color:white;
+    font-size:18px;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.search-results{
+    position:absolute;
+    width:100%;
+    background:#111d30;
+    margin-top:12px;
+    border-radius:20px;
+    overflow:hidden;
+    display:none;
+    z-index:100;
+    max-height:400px;
+    overflow-y:auto;
+}
+
+.result-item{
+    padding:18px 22px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.result-item:hover{
+    background:#4c6fff;
+}
+
+/* SECTION */
+
+section{
+    margin-top:90px;
+}
+
+.section-title{
+    font-size:42px;
+    margin-bottom:35px;
+    color:#74a9ff;
+}
+
+/* GRID */
+
+.topic-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+
+.topic-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    padding:28px;
+    transition:0.4s;
+}
+
+.topic-card:hover{
+    transform:translateY(-8px);
+    background:rgba(255,255,255,0.08);
+}
+
+.topic-card h3{
+    margin-bottom:18px;
+    color:#8cb8ff;
+    font-size:24px;
+}
+
+.topic-card p{
+    color:#d6d6d6;
+    line-height:1.8;
+    font-size:16px;
+}
+
+/* TRENDING */
+
+.trending{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.trend{
+    background:#14243c;
+    padding:14px 20px;
+    border-radius:40px;
+    transition:0.3s;
+}
+
+.trend:hover{
+    background:#4c6fff;
+}
+
+/* NEWS LINK */
+
+.news-link{
+    color:#74a9ff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.news-link:hover{
+    text-decoration:underline;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:100px;
+    text-align:center;
+    color:#999;
+    padding:40px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .sidebar{
+        width:100%;
+        height:auto;
+        position:relative;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .hero h1{
+        font-size:60px;
+    }
+
+    .section-title{
+        font-size:34px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">OMgpt</div>
+
+    <div class="nav-links">
+        <a href="#home">🏠 Home</a>
+        <a href="#mathematics">📘 Mathematics</a>
+        <a href="#physics">⚛️ Physics</a>
+        <a href="#chemistry">🔬 Chemistry</a>
+        <a href="#geography">🌍 Geography</a>
+        <a href="#english">📖 English</a>
+        <a href="#space">🚀 Space</a>
+        <a href="#history">📜 History</a>
+        <a href="#daily-news">📰 Daily News</a>
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <h1>OMgpt</h1>
+
+    <p>
+        Learn • Explore • Discover <br><br>
+        India's Smart Educational Knowledge Library
+    </p>
+
+    <div class="search-container">
+
+        <input
+            type="text"
+            class="search-bar"
+            id="searchInput"
+            placeholder="🔎 Search topics like Gravity, ISRO, Ashoka..."
+        />
+
+        <div class="search-results" id="searchResults"></div>
+
+    </div>
+
+</section>
+
+<!-- TRENDING -->
+
+<section>
+
+<h2 class="section-title">🔥 Trending Topics</h2>
+
+<div class="trending">
+    <div class="trend">🚀 ISRO</div>
+    <div class="trend">⚛️ Gravity</div>
+    <div class="trend">📘 Algebra</div>
+    <div class="trend">🌍 Climate Change</div>
+    <div class="trend">📜 Ashoka</div>
+    <div class="trend">💻 HTML</div>
+</div>
+
+</section>
+
+<!-- MATHEMATICS -->
+
+<section id="mathematics">
+
+<h2 class="section-title">📘 Mathematics</h2>
+
+<div class="topic-grid">
+
+<div class="topic-card">
+<h3>📐 Geometry</h3>
+<p>
+Geometry studies shapes, angles, lines and
+figures used in mathematics and design.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>📊 Algebra</h3>
+<p>
+Algebra uses symbols and equations to solve
+mathematical problems and unknown values.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>📏 Trigonometry</h3>
+<p>
+Trigonometry studies triangles using sine,
+cosine and tangent functions.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PHYSICS -->
+
+<section id="physics">
+
+<h2 class="section-title">⚛️ Physics</h2>
+
+<div class="topic-grid">
+
+<div class="topic-card">
+<h3>🌎 Gravity</h3>
+<p>
+Gravity is the force that attracts objects
+towards Earth and keeps planets in orbit.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>⚡ Electricity</h3>
+<p>
+Electricity is the flow of electric charge
+used to power devices and machines.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>🔊 Sound</h3>
+<p>
+Sound is a form of energy produced by
+vibrations travelling through air.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CHEMISTRY -->
+
+<section id="chemistry">
+
+<h2 class="section-title">🔬 Chemistry</h2>
+
+<div class="topic-grid">
+
+<div class="topic-card">
+<h3>🧪 Periodic Table</h3>
+<p>
+The periodic table arranges chemical elements
+based on atomic number and properties.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>⚗️ Acids Bases and Salts</h3>
+<p>
+Acids are sour, bases are bitter and salts
+are formed through chemical reactions.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- GEOGRAPHY -->
+
+<section id="geography">
+
+<h2 class="section-title">🌍 Geography</h2>
+
+<div class="topic-grid">
+
+<div class="topic-card">
+<h3>🏔️ Mountains</h3>
+<p>
+Mountains are large elevated landforms formed
+through tectonic plate movements.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>🌊 Oceans</h3>
+<p>
+Oceans cover most of Earth’s surface and help
+regulate climate and weather.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>🌧️ Climate</h3>
+<p>
+Climate describes long-term weather patterns
+of a region over many years.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ENGLISH -->
+
+<section id="english">
+
+<h2 class="section-title">📖 English</h2>
+
+<div class="topic-grid">
+
+<div class="topic-card">
+<h3>✍️ Grammar</h3>
+<p>
+Grammar helps form correct sentences and
+improves communication skills.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>📚 Vocabulary</h3>
+<p>
+Vocabulary refers to the collection of words
+used in a language.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>📝 Essay Writing</h3>
+<p>
+Essay writing helps students express ideas
+clearly and creatively.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SPACE -->
+
+<section id="space">
+
+<h2 class="section-title">🚀 Space</h2>
+
+<div class="topic-grid">
+
+<div class="topic-card">
+<h3>🛰️ ISRO</h3>
+<p>
+ISRO is India’s space agency known for
+missions like Chandrayaan and Mangalyaan.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>🌌 Black Holes</h3>
+<p>
+Black holes are regions in space with gravity
+so strong that even light cannot escape.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>🌞 Solar System</h3>
+<p>
+The Solar System includes the Sun, planets,
+moons and other celestial objects.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- HISTORY -->
+
+<section id="history">
+
+<h2 class="section-title">📜 Indian History</h2>
+
+<div class="topic-grid">
+
+<div class="topic-card">
+<h3>👑 Ashoka</h3>
+<p>
+Ashoka was a Mauryan emperor who promoted
+peace and spread Buddhism after Kalinga war.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>🏛️ Gupta Empire</h3>
+<p>
+The Gupta Empire is known as the Golden Age
+of ancient India for science and culture.
+</p>
+</div>
+
+<div class="topic-card">
+<h3>⚔️ Freedom Fighters</h3>
+<p>
+Freedom fighters struggled against British
+rule to make India independent.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- DAILY NEWS -->
+
+<section id="daily-news">
+
+<h2 class="section-title">📰 Daily Updated News</h2>
+
+<div class="topic-grid" id="newsContainer">
+
+<div class="topic-card">
+<h3>Loading News...</h3>
+<p>
+Please wait while latest news is loading.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 OMgpt • India's Smart Educational Knowledge Library
+</footer>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* TOPICS */
+
+const topics = [
+
+{
+name:"Geometry",
+section:"mathematics",
+description:"Geometry studies shapes and figures.",
+keywords:["angles","lines","shapes"]
+},
+
+{
+name:"Algebra",
+section:"mathematics",
+description:"Algebra uses equations and symbols.",
+keywords:["equations","maths"]
+},
+
+{
+name:"Gravity",
+section:"physics",
+description:"Gravity attracts objects towards Earth.",
+keywords:["newton","force","physics"]
+},
+
+{
+name:"Electricity",
+section:"physics",
+description:"Electricity powers modern devices.",
+keywords:["current","energy"]
+},
+
+{
+name:"Periodic Table",
+section:"chemistry",
+description:"Table of chemical elements.",
+keywords:["elements","chemistry"]
+},
+
+{
+name:"Climate",
+section:"geography",
+description:"Climate describes long-term weather.",
+keywords:["weather","earth"]
+},
+
+{
+name:"Grammar",
+section:"english",
+description:"Grammar improves sentence formation.",
+keywords:["english","language"]
+},
+
+{
+name:"ISRO",
+section:"space",
+description:"India's national space agency.",
+keywords:["space","rockets","india"]
+},
+
+{
+name:"Ashoka",
+section:"history",
+description:"Mauryan emperor who spread Buddhism.",
+keywords:["maurya","history"]
+}
+
+];
+
+/* SEARCH */
+
+const searchInput =
+document.getElementById("searchInput");
+
+const searchResults =
+document.getElementById("searchResults");
+
+searchInput.addEventListener("keyup", function(){
+
+const value =
+this.value.toLowerCase();
+
+searchResults.innerHTML = "";
+
+if(value === ""){
+
+searchResults.style.display = "none";
+return;
+
+}
+
+const filtered = topics.filter(topic =>
+
+topic.name.toLowerCase().includes(value)
+
+||
+
+topic.description.toLowerCase().includes(value)
+
+||
+
+topic.keywords.some(keyword =>
+keyword.toLowerCase().includes(value)
+)
+
+);
+
+searchResults.style.display = "block";
+
+if(filtered.length === 0){
+
+searchResults.innerHTML = `
+<div class="result-item">
+No topic found 🚀
+</div>
+`;
+
+}
+
+else{
+
+filtered.forEach(topic => {
+
+const div = document.createElement("div");
+
+div.classList.add("result-item");
+
+div.innerHTML = `
+🔎 <strong>${topic.name}</strong>
+<br>
+<small>${topic.description}</small>
+`;
+
+div.addEventListener("click", () => {
+
+document
+.getElementById(topic.section)
+.scrollIntoView({
+behavior:"smooth"
+});
+
+searchResults.style.display = "none";
+
+searchInput.value = "";
+
+});
+
+searchResults.appendChild(div);
+
+});
+
+}
+
+});
+
+/* CLOSE SEARCH */
+
+document.addEventListener("click", function(e){
+
+if(
+!searchInput.contains(e.target) &&
+!searchResults.contains(e.target)
+){
+
+searchResults.style.display = "none";
+
+}
+
+});
+
+/* DAILY NEWS API */
+
+async function loadNews(){
+
+const apiKey = "YOUR_API_KEY";
+
+const url =
+https://newsapi.org/v2/top-headlines?country=in&pageSize=6&apiKey=${apiKey};
+
+try{
+
+const response = await fetch(url);
+
+const data = await response.json();
+
+const newsContainer =
+document.getElementById("newsContainer");
+
+newsContainer.innerHTML = "";
+
+data.articles.forEach(article => {
+
+const card = document.createElement("div");
+
+card.classList.add("topic-card");
+
+card.innerHTML = `
+
+<h3>
+${article.title}
+</h3>
+
+<p>
+${article.description || "No description available"}
+</p>
+
+<br>
+
+<a
+href="${article.url}"
+target="_blank"
+class="news-link"
+> 
+ReadFull News →
+</a>
+
+`;
+
+newsContainer.appendChild(card);
+
+});
+
+}
+
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+loadNews();
+
+</script>
+
+</body>
+</html>
