@@ -837,69 +837,7 @@ searchResults.style.display = "none";
 
 });
 
-/* DAILY NEWS API */
 
-async function loadNews(){
-
-const apiKey = "YOUR_API_KEY";
-
-const url =
-https://newsapi.org/v2/top-headlines?country=in&pageSize=6&apiKey=${apiKey};
-
-try{
-
-const response = await fetch(url);
-
-const data = await response.json();
-
-const newsContainer =
-document.getElementById("newsContainer");
-
-newsContainer.innerHTML = "";
-
-data.articles.forEach(article => {
-
-const card = document.createElement("div");
-
-card.classList.add("topic-card");
-
-card.innerHTML = `
-
-<h3>
-${article.title}
-</h3>
-
-<p>
-${article.description || "No description available"}
-</p>
-
-<br>
-
-<a
-href="${article.url}"
-target="_blank"
-class="news-link"
-> 
-ReadFull News →
-</a>
-
-`;
-
-newsContainer.appendChild(card);
-
-});
-
-}
-
-catch(error){
-
-console.log(error);
-
-}
-
-}
-
-loadNews();
 
 </script>
 
