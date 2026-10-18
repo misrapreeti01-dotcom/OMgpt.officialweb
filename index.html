@@ -300,7 +300,7 @@ footer{
         <a href="#english">📖 English</a>
         <a href="#space">🚀 Space</a>
         <a href="#history">📜 History</a>
-       
+        <a href="#olympiad"> Olympiad</a>
     </div>
 
 </div>
@@ -662,6 +662,225 @@ rule to make India independent.
 
 <!-- FOOTER -->
 
+<!-- OLYMPIAD -->
+
+<section id="olympiad">
+
+<h2 class="section-title">🏆 Olympiad Zone</h2>
+
+<p style="color:#d6d6d6; font-size:18px; line-height:1.8; margin-bottom:30px;">
+Challenge yourself, improve your knowledge, and prepare
+for Olympiad examinations with OMgpt!
+</p>
+
+<div class="topic-grid">
+
+<div class="topic-card">
+<h3>📐 Mathematics Olympiad</h3>
+<p>
+Improve your mathematical reasoning, logical thinking,
+and problem-solving skills. Practice topics like algebra,
+geometry, number systems, fractions, and patterns.
+</p>
+<br>
+<a href="https://www.sofworld.org/" target="_blank"
+rel="noopener noreferrer" class="news-link">
+Explore Maths Olympiads →
+</a>
+</div>
+
+<div class="topic-card">
+<h3>🔬 Science Olympiad</h3>
+<p>
+Explore physics, chemistry, biology, and scientific
+discoveries. Strengthen your concepts with experiments,
+scientific reasoning, and application-based questions.
+</p>
+<br>
+<a href="https://www.sofworld.org/" target="_blank"
+rel="noopener noreferrer" class="news-link">
+Explore Science Olympiads →
+</a>
+</div>
+
+<div class="topic-card">
+<h3>📖 English Olympiad</h3>
+<p>
+Develop your vocabulary, grammar, reading comprehension,
+sentence formation, and communication skills through
+challenging English questions.
+</p>
+<br>
+<a href="https://www.sofworld.org/" target="_blank"
+rel="noopener noreferrer" class="news-link">
+Explore English Olympiads →
+</a>
+</div>
+
+<div class="topic-card">
+<h3>💻 Cyber Olympiad</h3>
+<p>
+Learn computer fundamentals, logical reasoning,
+internet safety, programming basics, and digital
+technology through interesting challenges.
+</p>
+<br>
+<a href="https://www.sofworld.org/" target="_blank"
+rel="noopener noreferrer" class="news-link">
+Explore Cyber Olympiads →
+</a>
+</div>
+
+<div class="topic-card">
+<h3>🌍 General Knowledge Olympiad</h3>
+<p>
+Test your knowledge of India, world geography,
+history, current affairs, sports, inventions,
+and important events around the world.
+</p>
+<br>
+<a href="https://www.sofworld.org/" target="_blank"
+rel="noopener noreferrer" class="news-link">
+Explore GK Olympiads →
+</a>
+</div>
+
+<div class="topic-card">
+<h3>🧠 Olympiad Practice Zone</h3>
+<p>
+Get ready for Olympiads by revising concepts,
+solving reasoning problems, and practicing
+multiple-choice questions. Challenge yourself
+to improve your score every day!
+</p>
+<br>
+<button
+onclick="document.getElementById('olympiadQuiz').style.display='block'"
+style="padding:12px 20px; border:0; border-radius:12px;
+background:#4c6fff; color:white; cursor:pointer;
+font-size:15px;">
+Start Practice Quiz 🚀
+</button>
+</div>
+
+</div>
+
+<!-- PRACTICE QUIZ -->
+
+<div id="olympiadQuiz" class="topic-card"
+style="display:none; margin-top:30px;">
+
+<h3>🧠 Quick Olympiad Challenge</h3>
+
+<p id="quizQuestion" style="margin-bottom:20px;">
+What is the next number in the series:
+2, 4, 8, 16, __?
+</p>
+
+<div id="quizOptions"
+style="display:flex; flex-wrap:wrap; gap:12px;">
+
+<button class="trend" onclick="checkAnswer(24)">24</button>
+<button class="trend" onclick="checkAnswer(32)">32</button>
+<button class="trend" onclick="checkAnswer(30)">30</button>
+<button class="trend" onclick="checkAnswer(20)">20</button>
+
+</div>
+
+<p id="quizFeedback"
+style="margin-top:20px; color:#8cb8ff;"></p>
+
+<button onclick="nextQuestion()"
+style="margin-top:20px; padding:12px 20px;
+border:0; border-radius:12px; background:#4c6fff;
+color:white; cursor:pointer;">
+Next Question →
+</button>
+
+</div>
+
+</section>
+
+<script>
+const olympiadQuestions = [
+  {
+    question: "What is the next number in the series: 2, 4, 8, 16, __?",
+    options: [24, 32, 30, 20],
+    answer: 32,
+    explanation: "Each number is doubled: 2, 4, 8, 16, 32."
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Venus", "Jupiter", "Mars", "Mercury"],
+    answer: "Mars",
+    explanation: "Mars appears reddish because of iron oxide on its surface."
+  },
+  {
+    question: "What is 15 × 6?",
+    options: [80, 90, 75, 95],
+    answer: 90,
+    explanation: "15 multiplied by 6 equals 90."
+  },
+  {
+    question: "Which gas do plants absorb during photosynthesis?",
+    options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
+    answer: "Carbon dioxide",
+    explanation: "Plants absorb carbon dioxide and use light energy to make food."
+  },
+  {
+    question: "What is the plural of 'child'?",
+    options: ["Childs", "Childes", "Children", "Childrens"],
+    answer: "Children",
+    explanation: "'Children' is the irregular plural of 'child'."
+  }
+];
+
+let quizIndex = 0;
+let quizAnswered = false;
+
+function renderQuestion() {
+  const question = olympiadQuestions[quizIndex];
+  quizAnswered = false;
+
+  document.getElementById("quizQuestion").textContent =
+    (quizIndex + 1) + ". " + question.question;
+
+  document.getElementById("quizFeedback").textContent = "";
+
+  const options = document.getElementById("quizOptions");
+  options.innerHTML = "";
+
+  question.options.forEach(option => {
+    const button = document.createElement("button");
+    button.className = "trend";
+    button.style.color = "white";
+    button.style.border = "none";
+    button.style.cursor = "pointer";
+    button.textContent = option;
+    button.addEventListener("click", () => checkAnswer(option));
+    options.appendChild(button);
+  });
+}
+
+function checkAnswer(selected) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+
+  const question = olympiadQuestions[quizIndex];
+  const correct = selected === question.answer;
+
+  document.getElementById("quizFeedback").textContent =
+    (correct ? "✅ Correct! " : "❌ Not quite. ") +
+    question.explanation;
+}
+
+function nextQuestion() {
+  quizIndex = (quizIndex + 1) % olympiadQuestions.length;
+  renderQuestion();
+}
+
+renderQuestion();
+</script>
 <footer>
 © 2026 OMgpt • India's Smart Educational Knowledge Library 
                BY OJAS MISHRA
@@ -739,7 +958,36 @@ section:"history",
 description:"Mauryan emperor who spread Buddhism.",
 keywords:["maurya","history"]
 }
-
+{
+    name: "Mathematics Olympiad",
+    section: "olympiad",
+    description: "Practice mathematical reasoning and problem-solving.",
+    keywords: ["olympiad", "maths olympiad", "IMO", "competition"]
+},
+{
+    name: "Science Olympiad",
+    section: "olympiad",
+    description: "Prepare for science-based Olympiad examinations.",
+    keywords: ["science", "NSO", "physics", "chemistry", "biology"]
+},
+{
+    name: "English Olympiad",
+    section: "olympiad",
+    description: "Improve English grammar and vocabulary.",
+    keywords: ["English", "IEO", "grammar", "vocabulary"]
+},
+{
+    name: "Cyber Olympiad",
+    section: "olympiad",
+    description: "Practice computer science and logical reasoning.",
+    keywords: ["cyber", "computer", "technology", "coding"]
+},
+{
+    name: "GK Olympiad",
+    section: "olympiad",
+    description: "Explore general knowledge and current affairs.",
+    keywords: ["GK", "general knowledge", "current affairs"]
+}
 ];
 
 /* SEARCH */
