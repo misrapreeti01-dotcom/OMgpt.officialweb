@@ -1,1 +1,1 @@
-# OMgpt.officialweb
+# OMgpt.com
