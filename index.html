@@ -353,68 +353,56 @@ footer{
 
 </section>
 
+
 <!-- MATHEMATICS -->
-
 <section id="mathematics">
+  <h2 class="section-title">📘 Mathematics</h2>
 
-<h2 class="section-title">📘 Mathematics</h2>
+  <div class="topic-grid">
+    <div class="topic-card">
+      <h3>📐 Geometry</h3>
+      <p>
+        Geometry studies shapes, angles, lines and figures.
+        Area of a rectangle = length × breadth.
+        Area of a square = side × side.
+        Perimeter of a rectangle = 2 × (length + breadth).
+        Perimeter of a square = 4 × side.
+      </p>
+    </div>
 
-<div class="topic-grid">
+    <div class="topic-card">
+      <h3>📊 Algebra</h3>
+      <p>
+        Algebra uses symbols and equations to solve mathematical
+        problems. Variables represent unknown or changing values.
+        An equation states that two expressions are equal.
+      </p>
+    </div>
 
-<div class="topic-card">
-<h3>📐 Geometry</h3>
-<p>
-Geometry studies shapes, angles, lines and
-figures used in mathematics and design. It
-uses tools like protractor and scale. Angles 
-are one of the basic chapters in geometry.
-Perimetrer and Area are also one of the core
-topics in geometry:
-Here are the formulas:
-Area of a rectangle: length*breadth
-Area of a square: side*side
-Perimeter of a rectangle: 2*(length+breadth)
-Perimeter of a square: 2*(side+side)
-</p>
-</div>
+    <div class="topic-card">
+      <h3>📏 Trigonometry</h3>
+      <p>
+        Trigonometry studies relationships between angles and sides
+        of triangles using sine, cosine and tangent.
+      </p>
+    </div>
 
-<div class="topic-card">
-<h3>📊 Algebra</h3>
-<p>
-Algebra uses symbols and equations to solve
-mathematical problems and unknown values. An
-expression contains various terms and signs. When 
-is equal to (=) is added to an expression it becomes
-an equation. Variables are the alphabets used in
-as a substitute of a number in mathematics.
-</p>
-</div>
+    <div class="topic-card">
+      <h3>🧮 Arithmetic Expression</h3>
+      <p>
+        An arithmetic expression combines numbers and operations
+        such as addition, subtraction, multiplication and division.
+      </p>
+    </div>
 
-<div class="topic-card">
-<h3>📏 Trigonometry</h3>
-<p>
-Trigonometry studies triangles using sine,
-cosine and tangent functions.
-
-</p>
-</div>
-
-<div class="topic-card">
-    <h3>🧮 Arithmetic Expression</h3>
-    <p>
-        An arithmetic expression combines numbers and
-        operations such as addition, subtraction,
-        multiplication, and division to produce a value.
-    </p>
-</div>
-
-<div class="topic-card">
-    <h3>📊 Ratio and Proportion</h3>
-    <p>
-        A ratio compares two quantities, while a proportion
-        states that two ratios are equal.
-    </p>
-</div>
+    <div class="topic-card">
+      <h3>📊 Ratio and Proportion</h3>
+      <p>
+        A ratio compares two quantities. A proportion states that
+        two ratios are equal.
+      </p>
+    </div>
+  </div>
 </section>
 
 <!-- PHYSICS -->
@@ -905,256 +893,126 @@ renderQuestion();
 <!-- JAVASCRIPT -->
 
 <script>
-
-/* TOPICS */
-
 const topics = [
+  { name: "Geometry", section: "mathematics", description: "Shapes, angles, lines and figures.", keywords: ["maths", "area", "perimeter"] },
+  { name: "Algebra", section: "mathematics", description: "Equations, variables and expressions.", keywords: ["maths", "equations", "variables"] },
+  { name: "Trigonometry", section: "mathematics", description: "Sine, cosine and tangent.", keywords: ["triangles", "sine", "cosine", "tangent"] },
+  { name: "Arithmetic Expression", section: "mathematics", description: "Numbers and arithmetic operations.", keywords: ["addition", "subtraction", "multiplication", "division"] },
+  { name: "Ratio and Proportion", section: "mathematics", description: "Comparing quantities and equivalent ratios.", keywords: ["ratio", "proportion"] },
 
-{
-name:"Geometry",
-section:"mathematics",
-description:"Geometry studies shapes and figures.",
-keywords:["angles","lines","shapes"]
-},
+  { name: "Gravity", section: "physics", description: "Gravity attracts objects with mass.", keywords: ["newton", "force", "physics"] },
+  { name: "Electricity", section: "physics", description: "Electric charges and electrical energy.", keywords: ["current", "energy", "charges"] },
+  { name: "Sound", section: "physics", description: "Sound is produced by vibrations.", keywords: ["frequency", "hertz", "decibels"] },
 
-{
-name:"Algebra",
-section:"mathematics",
-description:"Algebra uses equations and symbols.",
-keywords:["equations","maths"]
-},
+  { name: "Periodic Table", section: "chemistry", description: "The table of chemical elements.", keywords: ["elements", "chemistry", "sodium", "gold"] },
+  { name: "Acids Bases and Salts", section: "chemistry", description: "Acids, bases, indicators and neutralization.", keywords: ["acid", "base", "alkali", "salt"] },
 
-{
-name:"Gravity",
-section:"physics",
-description:"Gravity attracts objects towards Earth.",
-keywords:["newton","force","physics"]
-},
+  { name: "Mountains", section: "geography", description: "Learn about mountains and landforms.", keywords: ["Everest", "Mauna Kea", "landforms"] },
+  { name: "Oceans", section: "geography", description: "Explore Earth's five oceans.", keywords: ["Pacific", "Atlantic", "Indian Ocean", "Arctic"] },
+  { name: "Weather and Climate", section: "geography", description: "Weather conditions and long-term climate.", keywords: ["weather", "climate", "rain"] },
+  { name: "Climate Change", section: "geography", description: "Long-term changes in Earth's climate.", keywords: ["global warming", "environment"] },
 
-{
-name:"Electricity",
-section:"physics",
-description:"Electricity powers modern devices.",
-keywords:["current","energy"]
-},
+  { name: "Grammar", section: "english", description: "Grammar and correct sentence formation.", keywords: ["English", "nouns", "verbs", "tenses"] },
+  { name: "Vocabulary", section: "english", description: "Words and their meanings.", keywords: ["words", "meaning", "English"] },
+  { name: "Essay Writing", section: "english", description: "Express ideas clearly in writing.", keywords: ["essay", "writing"] },
 
-{
-name:"Periodic Table",
-section:"chemistry",
-description:"Table of chemical elements.",
-keywords:["elements","chemistry"]
-},
+  { name: "ISRO", section: "space", description: "India's national space agency.", keywords: ["space", "rockets", "Chandrayaan", "Mangalyaan"] },
+  { name: "Black Holes", section: "space", description: "Regions of space with extremely strong gravity.", keywords: ["astronomy", "gravity", "universe"] },
+  { name: "Solar System", section: "space", description: "The Sun and objects that orbit it.", keywords: ["planets", "Sun", "moons"] },
 
-{
-name:"Climate",
-section:"geography",
-description:"Climate describes long-term weather.",
-keywords:["weather","earth"]
-},
+  { name: "Ashoka", section: "history", description: "Mauryan emperor associated with Buddhism.", keywords: ["Maurya", "Kalinga", "history"] },
+  { name: "Gupta Empire", section: "history", description: "An important ancient Indian empire.", keywords: ["India", "ancient history"] },
+  { name: "Freedom Fighters", section: "history", description: "People who fought for India's independence.", keywords: ["India", "independence", "freedom"] },
 
-{
-name:"Grammar",
-section:"english",
-description:"Grammar improves sentence formation.",
-keywords:["english","language"]
-},
-
-{
-name:"ISRO",
-section:"space",
-description:"India's national space agency.",
-keywords:["space","rockets","india"]
-},
-
-{
-name:"Ashoka",
-section:"history",
-description:"Mauryan emperor who spread Buddhism.",
-keywords:["maurya","history"]
-},
-{
-    name: "Mathematics Olympiad",
-    section: "olympiad",
-    description: "Practice mathematical reasoning and problem-solving.",
-    keywords: ["olympiad", "maths olympiad", "IMO", "competition"]
-},
-{
-    name: "Science Olympiad",
-    section: "olympiad",
-    description: "Prepare for science-based Olympiad examinations.",
-    keywords: ["science", "NSO", "physics", "chemistry", "biology"]
-},
-{
-    name: "English Olympiad",
-    section: "olympiad",
-    description: "Improve English grammar and vocabulary.",
-    keywords: ["English", "IEO", "grammar", "vocabulary"]
-},
-{
-    name: "Cyber Olympiad",
-    section: "olympiad",
-    description: "Practice computer science and logical reasoning.",
-    keywords: ["cyber", "computer", "technology", "coding"]
-},
-{
-    name: "GK Olympiad",
-    section: "olympiad",
-    description: "Explore general knowledge and current affairs.",
-    keywords: ["GK", "general knowledge", "current affairs"]
-},{
-    name: "Trigonometry",
-    section: "mathematics",
-    description: "Study of triangles using sine, cosine and tangent.",
-    keywords: ["sine", "cosine", "tangent", "triangles"]
-},
-{
-    name: "Arithmetic Expression",
-    section: "mathematics",
-    description: "Numbers combined with mathematical operations.",
-    keywords: ["addition", "subtraction", "multiplication", "division"]
-},
-{
-    name: "Ratio and Proportion",
-    section: "mathematics",
-    description: "Compare quantities and equivalent ratios.",
-    keywords: ["ratio", "proportion", "fractions"]
-},
-{
-    name: "Sound",
-    section: "physics",
-    description: "Sound is produced by vibrations.",
-    keywords: ["frequency", "hertz", "decibels", "vibrations"]
-},
-{
-    name: "Oceans",
-    section: "geography",
-    description: "Learn about Earth's five oceans.",
-    keywords: ["Pacific", "Atlantic", "Indian Ocean", "Arctic"]
-},
-{
-    name: "Black Holes",
-    section: "space",
-    description: "Regions of space where gravity is extremely strong.",
-    keywords: ["astronomy", "gravity", "space"]
-},
-{
-    name: "Solar System",
-    section: "space",
-    description: "The Sun and the objects that orbit it.",
-    keywords: ["planets", "Sun", "moons", "Earth"]
-},
-{
-    name: "Gupta Empire",
-    section: "history",
-    description: "An important ancient Indian empire.",
-    keywords: ["India", "ancient history", "empire"]
-}
+  { name: "Mathematics Olympiad", section: "olympiad", description: "Practice mathematical reasoning.", keywords: ["maths olympiad", "competition", "IMO"] },
+  { name: "Science Olympiad", section: "olympiad", description: "Prepare for science competitions.", keywords: ["NSO", "science", "biology", "physics"] },
+  { name: "English Olympiad", section: "olympiad", description: "Practise English grammar and vocabulary.", keywords: ["IEO", "grammar"] },
+  { name: "Cyber Olympiad", section: "olympiad", description: "Practise computer skills and logical reasoning.", keywords: ["computer", "coding", "technology"] },
+  { name: "GK Olympiad", section: "olympiad", description: "General knowledge and current affairs.", keywords: ["GK", "current affairs", "general knowledge"] }
 ];
 
-/* SEARCH */
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
 
-const searchInput =
-document.getElementById("searchInput");
+if (!searchInput || !searchResults) {
+  console.error("OMgpt search: input or results container is missing.");
+} else {
+  function performSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    searchResults.replaceChildren();
 
-const searchResults =
-document.getElementById("searchResults");
+    if (!query) {
+      searchResults.style.display = "none";
+      return;
+    }
 
-searchInput.addEventListener("keyup", function(){
+    const matches = topics.filter(topic =>
+      [topic.name, topic.description, ...topic.keywords]
+        .some(text => text.toLowerCase().includes(query))
+    );
 
-const value =
-this.value.toLowerCase();
+    searchResults.style.display = "block";
 
-searchResults.innerHTML = "";
+    if (matches.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "result-item";
+      empty.textContent = "No topic found 🚀";
+      searchResults.appendChild(empty);
+      return;
+    }
 
-if(value === ""){
+    matches.forEach(topic => {
+      const item = document.createElement("div");
+      item.className = "result-item";
+      item.tabIndex = 0;
+      item.setAttribute("role", "button");
 
-searchResults.style.display = "none";
-return;
+      const title = document.createElement("strong");
+      title.textContent = "🔎 " + topic.name;
 
+      const description = document.createElement("small");
+      description.textContent = topic.description;
+
+      item.append(title, document.createElement("br"), description);
+
+      function openTopic() {
+        const section = document.getElementById(topic.section);
+
+        if (!section) {
+          console.error("OMgpt: section not found:", topic.section);
+          return;
+        }
+
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+        searchResults.style.display = "none";
+        searchInput.value = "";
+      }
+
+      item.addEventListener("click", openTopic);
+      item.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openTopic();
+        }
+      });
+
+      searchResults.appendChild(item);
+    });
+  }
+
+  searchInput.addEventListener("input", performSearch);
+
+  document.addEventListener("click", event => {
+    if (
+      !searchInput.contains(event.target) &&
+      !searchResults.contains(event.target)
+    ) {
+      searchResults.style.display = "none";
+    }
+  });
 }
-
-const filtered = topics.filter(topic =>
-
-topic.name.toLowerCase().includes(value)
-
-||
-
-topic.description.toLowerCase().includes(value)
-
-||
-
-topic.keywords.some(keyword =>
-keyword.toLowerCase().includes(value)
-)
-
-);
-
-searchResults.style.display = "block";
-
-if(filtered.length === 0){
-
-searchResults.innerHTML = `
-<div class="result-item">
-No topic found 🚀
-</div>
-`;
-
-}
-
-else{
-
-filtered.forEach(topic => {
-
-const div = document.createElement("div");
-
-div.classList.add("result-item");
-
-div.innerHTML = `
-🔎 <strong>${topic.name}</strong>
-<br>
-<small>${topic.description}</small>
-`;
-
-div.addEventListener("click", () => {
-
-document
-.getElementById(topic.section)
-.scrollIntoView({
-behavior:"smooth"
-});
-
-searchResults.style.display = "none";
-
-searchInput.value = "";
-
-});
-
-searchResults.appendChild(div);
-
-});
-
-}
-
-});
-
-/* CLOSE SEARCH */
-
-document.addEventListener("click", function(e){
-
-if(
-!searchInput.contains(e.target) &&
-!searchResults.contains(e.target)
-){
-
-searchResults.style.display = "none";
-
-}
-
-});
-
-
-
 </script>
+
 
 </body>
 </html>
