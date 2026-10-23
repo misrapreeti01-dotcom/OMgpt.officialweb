@@ -536,13 +536,6 @@
         </div>
       </div>
 
-      <div class="quiz">
-        <h4>Challenge</h4>
-        <p>Quick revision round. Test your speed and understanding.</p>
-        <div class="quiz-box" id="quizBox">Start Quiz</div>
-      </div>
-    </div>
-  </main>
 
   <script>
     const chatInput = document.getElementById("chatInput");
@@ -2258,7 +2251,7 @@
         }
       }
 
-      return "I don’t have enough knowledge on that topic yet. Visit <a href='https://misrapreeti01-dotcom.github.io/OMgpt-LIBRARY/' target='_blank' rel='noopener noreferrer'>OMgpt-LIBRARY</a> for more learning resources.";
+      return "I don’t have enough knowledge on that topic yet.";
     }
 
     function sendMessage() {
@@ -2314,14 +2307,7 @@
 
     newChatBtn.addEventListener("click", resetChat);
 
-    quizBox.addEventListener("click", function () {
-      addMessage("Quick quiz: What is 9 × 8?", "user");
-      setTimeout(() => {
-        addMessage("The answer is 72.", "bot");
-      }, 260);
-    });
-
-    resetChat();
+   resetChat();
   </script>
 </body>
 </html>
