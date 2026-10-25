@@ -101,6 +101,7 @@
             display: flex;
             gap: 10px;
             margin-bottom: 10px;
+            font-weight: bold;
         }
 
         .chip {
@@ -119,6 +120,7 @@
             flex: 1;
             resize: none;
             padding: 10px;
+            font-weight: bold;
         }
 
         .panel {
@@ -126,12 +128,21 @@
             background: rgba(0,0,0,0.2);
             padding: 15px;
             border-radius: 8px;
+            max-width: 20%;
         }
 
         .subject-grid {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            padding: 10px;
+            border: #edf7ff;
+            box-sizing: border-box;
+            margin: 10%;
+            max-width: 100%;
+            text-align: center;
+            color: aqua;
+            background-color: none;
         }
 
         .subject a {
@@ -152,7 +163,7 @@
       box-shadow: 0 12px 22px rgba(125, 211, 252, 0.38);
     }
 
- .header {
+    .header {
       font-size: 28px;
       font-weight: 700;
       letter-spacing: -0.06em;
@@ -160,6 +171,57 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+    }
+
+   
+     .math{
+        font-weight: bold;
+        color: transparent;
+        font-size: larger;
+        margin: 5%;
+        padding: 5%;
+        border-radius: 12px;
+    }
+    
+     .science{
+        font-weight: bold;
+        color: transparent;
+        font-size: larger;
+        margin: 5%;
+        padding: 5%;
+    }
+
+     .english{
+        font-weight: bold;
+        color: transparent;
+        font-size: larger;
+        margin: 5%;
+        padding: 5%;
+    }
+
+     .coding{
+        font-weight: bold;
+        color: transparent;
+        font-size: larger;
+        margin: 5%;
+        padding: 5%;
+    }
+
+     .gk{
+        font-weight: bold;
+        color: transparent;
+        font-size: larger;
+        margin: 5%;
+        padding: 5%;
+    }
+
+     .history{
+         
+        font-weight: bold;
+        color: transparent;
+        font-size: larger;
+        margin: 5%;
+        padding: 5%;
     }
 
 
@@ -213,13 +275,13 @@
         <div class="panel">
             <h3>OMgpt-Extra Learning</h3>
             <div class="subject-grid">
-                <div class="subject" data-subject="math"><a href="https://misrapreeti01-dotcom.github.io/Calculator_OMgpt/">Math</a></div>
-                <div class="subject" data-subject="science"><a href="https://misrapreeti01-dotcom.github.io/Chemistry_OMgpt/">Science</a></div>
-                <div class="subject" data-subject="history"><a href="https://misrapreeti01-dotcom.github.io/History_OMgpt/">History</a></div>
-                <div class="subject" data-subject="english"><a href="https://misrapreeti01-dotcom.github.io/English_OMgpt/">English</a></div>
-                <div class="subject" data-subject="gk"><a href="https://misrapreeti01-dotcom.github.io/GK_OMgpt/">GK</a></div>
-                <div class="subject" data-subject="know your scientists"><a href="https://misrapreeti01-dotcom.github.io/AlbertEinstein_OMgpt/">Know Your Scientists</a></div>
-                <div class="subject" data-subject="coding"><a href="https://misrapreeti01-dotcom.github.io/CODING_OMgpt/">Coding</a></div>
+                <div class="math" data-subject="math"><a href="https://misrapreeti01-dotcom.github.io/Calculator_OMgpt/">Math</a></div>
+                <div class="science" data-subject="science"><a href="https://misrapreeti01-dotcom.github.io/Chemistry_OMgpt/">Science</a></div>
+                <div class="history" data-subject="history"><a href="https://misrapreeti01-dotcom.github.io/History_OMgpt/">History</a></div>
+                <div class="english" data-subject="english"><a href="https://misrapreeti01-dotcom.github.io/English_OMgpt/">English</a></div>
+                <div class="gk" data-subject="gk"><a href="https://misrapreeti01-dotcom.github.io/GK_OMgpt/">GK</a></div>
+                <div class="scientists" data-subject="know your scientists"><a href="https://misrapreeti01-dotcom.github.io/AlbertEinstein_OMgpt/">Know Your Scientists</a></div>
+                <div class="coding" data-subject="coding"><a href="https://misrapreeti01-dotcom.github.io/CODING_OMgpt/">Coding</a></div>
             </div>
         </div>
     </div>
