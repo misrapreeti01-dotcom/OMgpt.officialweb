@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OMgpt-Smart Learning AI</title>
     <style>
+      :root {
+        --primary: #7dd3fc;
+        --primary-2: #c4b5fd;
+      }
+
         html, body { 
             background-color: rgb(28, 29, 66);
             height: 100%;
@@ -16,8 +21,8 @@
 
         body {
             background-color: rgb(38, 25, 73);
-            min-width: 100vw;
-            min-height: 100vw;
+          min-width: 320px;
+          min-height: 100vh;
             display: flex;
         }
 
@@ -28,8 +33,9 @@
             background: rgba(255, 255, 255, 0.05);
             padding: 18px 14px;
             width: 260px;
+            min-height: 100vh;
             box-sizing: border-box;
-            max height: 50%;
+            flex-shrink: 0;
         }
 
         .new-chat {
@@ -63,7 +69,9 @@
             flex-direction: row;
             padding: 20px;
             gap: 20px;
-            max-height: 40%;
+          min-width: 0;
+          min-height: 100vh;
+          box-sizing: border-box;
         }
 
         .chat-panel {
@@ -71,6 +79,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+          min-width: 0;
         }
 
         .chat-scroll {
@@ -92,7 +101,7 @@
             padding: 10px 14px;
             border-radius: 8px;
             max-width: 70%;
-            max-height: 50%%;
+            max-height: 50%;
         }
         .bot .bubble { background: #3b3b5c; }
         .user .bubble { background: #5a5a8a; }
@@ -124,11 +133,12 @@
         }
 
         .panel {
-            flex: 1;
+          flex: 0 0 250px;
             background: rgba(0,0,0,0.2);
             padding: 15px;
             border-radius: 8px;
-            max-width: 20%;
+          box-sizing: border-box;
+          overflow-y: auto;
         }
 
         .subject-grid {
@@ -136,19 +146,52 @@
             flex-direction: column;
             gap: 10px;
             padding: 10px;
-            border: #edf7ff;
             box-sizing: border-box;
-            margin: 10%;
+            margin: 0;
             max-width: 100%;
             text-align: center;
             color: aqua;
-            background-color: none;
+            background-color: transparent;
         }
 
-        .subject a {
+          .subject-grid > div {
+            margin: 0;
+            padding: 10px 8px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.06);
+          }
+
+          .subject-grid a {
             color: aqua;
             text-decoration: none;
+            display: block;
         }
+
+          .subject-grid > div:hover {
+            background: rgba(125, 211, 252, 0.16);
+          }
+
+          @media (max-width: 760px) {
+            body {
+              display: block;
+            }
+
+            .slidebar {
+              width: 100%;
+              min-height: auto;
+            }
+
+            .chat-area {
+              min-height: auto;
+              flex-direction: column;
+            }
+
+            .panel {
+              flex-basis: auto;
+              max-height: none;
+            }
+          }
         
       .brand-mark {
       width: 38px;
@@ -259,9 +302,9 @@
             <div class="chat-scroll" id="chatScroll"></div>
             
             <div class="prompts">
-                <div class="chip">Who are you</div>
-                <div class="chip">Explain Gravity</div>
-                <div class="chip">Mitochondria</div>
+                <div class="chip" data-prompt="Who are you">Who are you</div>
+                <div class="chip" data-prompt="Explain Gravity">Explain Gravity</div>
+                <div class="chip" data-prompt="Mitochondria">Mitochondria</div>
             </div>
 
             <div class="composer">
@@ -279,7 +322,7 @@
                 <div class="science" data-subject="science"><a href="https://misrapreeti01-dotcom.github.io/Chemistry_OMgpt/">Science</a></div>
                 <div class="history" data-subject="history"><a href="https://misrapreeti01-dotcom.github.io/History_OMgpt/">History</a></div>
                 <div class="english" data-subject="english"><a href="https://misrapreeti01-dotcom.github.io/English_OMgpt/">English</a></div>
-                <div class="gk" data-subject="gk"><a href="https://www.scribd.com/document/885138485/50-GK-Questions-With-Answers">GK</a></div>
+                <div class="gk" data-subject="gk"><a href="https://misrapreeti01-dotcom.github.io/GK_OMgpt/">GK</a></div>
                 <div class="scientists" data-subject="know your scientists"><a href="https://misrapreeti01-dotcom.github.io/AlbertEinstein_OMgpt/">Know Your Scientists</a></div>
                 <div class="coding" data-subject="coding"><a href="https://misrapreeti01-dotcom.github.io/CODING_OMgpt/">Coding</a></div>
             </div>
@@ -318,7 +361,7 @@
       if (!text) return "Write a question and I’ll help.";
 
       const knowledge = [
-        ["hello", "hi", "hey"], "Hi! I can explain school topics, science, maths, history, coding, geography, and GK in simple language.",
+        ["hello", "hi", "hey"], "Hi! I can explain school topics, science, maths, history, coding, geography, and GK in simple language. I am founded by Ojas Mishra. Ask me anything you want to learn.",
         ["who are you", "what is omgpt", "what is omgpt"], "OMgpt is a smart study assistant designed to explain concepts clearly and make learning easier.",
         ["gravity"], "Gravity is the force that pulls objects toward each other. It keeps us on the ground and keeps the Moon orbiting Earth.",
         ["math", "mathematics", "algebra", "equation", "geometry"], "Algebra uses symbols and equations to solve problems. Example: 2x + 3 = 11 means x = 4. Geometry studies shapes, angles, and space.",
@@ -1983,12 +2026,14 @@
         ["auditory learning"], "Auditory learning uses listening, speaking, and sound-based methods to learn effectively.",
         ["kinesthetic learning"], "Kinesthetic learning uses movement, touch, and physical activity to understand and remember concepts.",
         ["study method"], "A study method is a structured way to learn, practice, and revise a topic.",
-        ["multi modality"], "Multi-modality means using several learning styles together, like reading, listening, drawing, and doing.",
+        ["multi modality"],  "Multi-modality means using several learning styles together, like reading, listening, drawing, and doing.",
         ["student success"], "Student success comes from consistent effort, understanding, practice, time management, and motivation.",
         ["learning growth"], "Learning growth means improving your knowledge and skill gradually through consistent effort.",
         ["self improvement"], "Self-improvement means working on your abilities, habits, and mindset to become better over time.",
         ["skills"], "Skills are abilities built through practice, study, and repeated effort.",
-        ["knowledge base"], "A knowledge base holds useful information that can be reviewed anytime for learning and problem-solving."
+        ["knowledge base"], "A knowledge base holds useful information that can be reviewed anytime for learning and problem-solving.",
+        ["2+2"],  "The answer is 4.",
+        ["4+4"],  "The answer is 8."
       ];
 
       for (let i = 0; i < knowledge.length; i += 2) {
@@ -2032,17 +2077,18 @@
       });
     });
 
-    document.querySelectorAll(".nav-item").forEach(item => {
+    document.querySelectorAll(".title").forEach(item => {
       item.addEventListener("click", () => {
-        document.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
+        document.querySelectorAll(".title").forEach(i => i.classList.remove("active"));
         item.classList.add("active");
       });
     });
 
-    document.querySelectorAll(".subject").forEach(subject => {
+    document.querySelectorAll(".subject-grid > div").forEach(subject => {
       subject.addEventListener("click", () => {
         const subjectName = subject.dataset.subject;
         const map = {
+          maths: "Math",
           math: "Math",
           science: "Science",
           history: "History",
