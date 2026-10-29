@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>OMgpt-Smart Learning AI</title>
     <style>
     
@@ -250,8 +251,181 @@
         padding: 5%;
     }
 
+     @media (max-width: 760px) {
+       html,
+       body {
+         height: auto;
+         min-height: 100%;
+       }
 
-    </style>
+       body {
+         width: 100%;
+         overflow-x: hidden;
+       }
+
+       .slidebar {
+         display: grid;
+         grid-template-columns: 38px minmax(0, 1fr) auto;
+         align-items: center;
+         gap: 12px 10px;
+         padding: 16px;
+         background: rgba(15, 12, 42, 0.55);
+         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+       }
+
+       .brand-mark {
+         background: linear-gradient(135deg, #7dd3fc, #a78bfa);
+       }
+
+       .header {
+         min-width: 0;
+         font-size: 24px;
+       }
+
+       .new-chat {
+         margin: 0;
+         padding: 9px 11px;
+         gap: 8px;
+         white-space: nowrap;
+       }
+
+       .nav {
+         grid-column: 1 / -1;
+         flex-direction: row;
+         gap: 8px;
+         overflow-x: auto;
+         padding-bottom: 2px;
+         scrollbar-width: none;
+       }
+
+       .nav::-webkit-scrollbar {
+         display: none;
+       }
+
+       .title {
+         flex: 0 0 auto;
+         padding: 8px 12px;
+         border: 1px solid rgba(255, 255, 255, 0.12);
+         border-radius: 999px;
+         background: rgba(255, 255, 255, 0.07);
+         color: #e8e7ff;
+       }
+
+       .card {
+         display: none;
+       }
+
+       .chat-area {
+         min-height: auto;
+         padding: 14px;
+         gap: 16px;
+       }
+
+       .chat-panel {
+         min-height: 68svh;
+         justify-content: flex-start;
+       }
+
+       .main,
+       .text-box {
+         display: none;
+       }
+
+       .chat-scroll {
+         flex: 1;
+         min-height: 220px;
+         max-height: 52svh;
+         padding: 12px;
+         border-color: rgba(255, 255, 255, 0.12);
+         border-radius: 12px;
+         background: rgba(15, 12, 42, 0.28);
+       }
+
+       .bubble {
+         max-width: 88%;
+         max-height: none;
+         line-height: 1.5;
+         overflow-wrap: anywhere;
+       }
+
+       .prompts {
+         gap: 8px;
+         overflow-x: auto;
+         padding-bottom: 4px;
+         scrollbar-width: none;
+       }
+
+       .prompts::-webkit-scrollbar {
+         display: none;
+       }
+
+       .chip {
+         flex: 0 0 auto;
+         padding: 8px 12px;
+         font-size: 0.85rem;
+         white-space: nowrap;
+       }
+
+       .composer-box {
+         align-items: stretch;
+       }
+
+       .composer-box textarea {
+         min-width: 0;
+         min-height: 48px;
+         border: 1px solid rgba(255, 255, 255, 0.18);
+         border-radius: 12px;
+         background: rgba(255, 255, 255, 0.96);
+         font-size: 16px;
+       }
+
+       .send-btn {
+         min-width: 48px;
+         border: 0;
+         border-radius: 12px;
+         background: #8b7cf6;
+         color: white;
+         font-size: 18px;
+       }
+
+       .panel {
+         flex-basis: auto;
+         max-height: none;
+         padding: 16px;
+         border: 1px solid rgba(255, 255, 255, 0.08);
+       }
+
+       .panel h3 {
+         margin-top: 0;
+         font-size: 1.1rem;
+       }
+
+       .subject-grid {
+         display: grid;
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+         gap: 10px;
+         padding: 0;
+       }
+
+       .subject-grid > div {
+         min-width: 0;
+         margin: 0;
+         padding: 14px 10px;
+         border-radius: 10px;
+         font-size: 1rem;
+       }
+
+       .subject-grid a {
+         display: flex;
+         min-height: 24px;
+         align-items: center;
+         justify-content: center;
+         overflow-wrap: anywhere;
+       }
+     }
+
+
+     </style>
 </head>
 <body>
     <aside class="slidebar"> 
