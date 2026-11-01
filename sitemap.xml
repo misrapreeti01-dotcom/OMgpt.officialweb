@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://sitemaps.org">
+  
+  <!-- Main Homepage -->
+  <url>
+    <loc>https://misrapreeti01-dotcom.github.io/OMgpt.officialweb/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Maths Section -->
+  <url>
+    <loc>https://misrapreeti01-dotcom.github.io/Calculator_OMgpt/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Science Section -->
+  <url>
+    <loc>https://misrapreeti01-dotcom.github.io/Chemistry_OMgpt/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Coding Section -->
+  <url>
+    <loc>https://misrapreeti01-dotcom.github.io/CODING_OMgpt/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- History Section -->
+  <url>
+    <loc>https://misrapreeti01-dotcom.github.io/History_OMgpt/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- English Section -->
+  <url>
+    <loc>https://misrapreeti01-dotcom.github.io/English_OMgpt/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<!-- GK Section -->
+  <url>
+    <loc>https://misrapreeti01-dotcom.github.io/GK_OMgpt/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
